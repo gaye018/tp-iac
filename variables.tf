@@ -12,10 +12,16 @@ variable "container_name" {
 variable "external_port" {
   description = "Port HTTP exposé sur la machine locale"
   type        = number
-  default     = 8080
+  default     = 8082
 
   validation {
     condition     = var.external_port >= 1024 && var.external_port <= 65535
     error_message = "Le port doit être compris entre 1024 et 65535."
   }
+}
+
+variable "network_name" {
+  description = "Nom du réseau Docker"
+  type        = string
+  default     = "tp-iac-nginx-network"
 }
